@@ -38,13 +38,14 @@ struct hs300x_device
 {
     struct rt_i2c_bus_device *i2c;
 
-    rt_mutex_t lock;
+    uint8_t addr;
 };
 static struct hs300x_device temp_humi_dev;
 
 static rt_err_t _hs300x_init(struct rt_sensor_intf *intf)
 {
     temp_humi_dev.i2c = rt_i2c_bus_device_find(intf->dev_name);
+    temp_humi_dev.addr = (uint8_t)intf->user_data;
 
     if (temp_humi_dev.i2c == RT_NULL)
     {
@@ -61,7 +62,7 @@ int hs300x_read_data(struct hs300x_device* dev, float *humi_f, float *temp_f)
     float    tmp_f   = 0.0;
     struct rt_i2c_msg msgs;
 
-    msgs.addr = HS300X_I2C_ADDR;
+    msgs.addr = dev->addr;
     msgs.flags = RT_I2C_WR;
     msgs.buf = 0;
     msgs.len = 0;
@@ -71,7 +72,7 @@ int hs300x_read_data(struct hs300x_device* dev, float *humi_f, float *temp_f)
         return -1;
     }
 
-    msgs.addr = HS300X_I2C_ADDR;
+    msgs.addr = dev->addr;
     msgs.flags = RT_I2C_RD;
     msgs.buf = r_buf;
     msgs.len = 4;
