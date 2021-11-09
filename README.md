@@ -60,7 +60,7 @@ int rt_hw_hs300x_init(const char *name, struct rt_sensor_config *cfg)；
 #### 初始化示例
 
 ```c
-#include "sensor_asair_hs300x.h"
+#include "sensor_renesas_hs300x.h"
 #define HS300X_I2C_BUS  "i2c2"
 
 int rt_hw_hs300x_port(void)
@@ -76,6 +76,11 @@ int rt_hw_hs300x_port(void)
 }
 INIT_ENV_EXPORT(rt_hw_hs300x_port);
 ```
+
+#### 读取数据
+
+- 通过导出的测试命令 `sensor_polling humi_hs3` ，判断能否成功读取湿度数据。
+- 通过导出的测试命令 `sensor_polling temp_hs3` ，判断能否成功读取温度数据。
 
 ## 注意事项
 
