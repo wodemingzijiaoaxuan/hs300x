@@ -8,6 +8,9 @@
  * 2020-11-03     flybreak     the first version
  */
 
+#include <stdint.h>
+#include <stdlib.h>
+
 #include "sensor_renesas_hs300x.h"
 
 #define DBG_TAG "sensor.renesas.hs300x"
