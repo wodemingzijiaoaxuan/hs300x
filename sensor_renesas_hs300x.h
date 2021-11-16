@@ -8,8 +8,8 @@
  * 2020-11-03     flybreak     the first version
  */
 
-#ifndef SENSOR_ASSIR_AHT10_H__
-#define SENSOR_ASSIR_AHT10_H__
+#ifndef SENSOR_RENESAS_HS300X_H__
+#define SENSOR_RENESAS_HS300X_H__
 
 #include "sensor.h"
 
