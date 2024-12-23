@@ -11,7 +11,7 @@
 #ifndef SENSOR_RENESAS_HS300X_H__
 #define SENSOR_RENESAS_HS300X_H__
 
-#include "sensor.h"
+#include "rtdevice.h"
 
 #define HS300X_I2C_ADDR 0x44
 

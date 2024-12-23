@@ -17,6 +17,14 @@
 #define DBG_LVL DBG_INFO
 #include <rtdbg.h>
 
+#if defined(RT_VERSION_CHECK)
+    #if (RTTHREAD_VERSION >= RT_VERSION_CHECK(5, 0, 2))
+        #define RT_SIZE_TYPE   rt_ssize_t
+    #else
+        #define RT_SIZE_TYPE   rt_size_t
+    #endif
+#endif
+
 #define SENSOR_TEMP_RANGE_MAX (80)
 #define SENSOR_TEMP_RANGE_MIN (-10)
 #define SENSOR_HUMI_RANGE_MAX (100)
@@ -154,7 +162,7 @@ static rt_size_t _hs300x_polling_get_data(rt_sensor_t sensor, struct rt_sensor_d
     return 1;
 }
 
-static rt_size_t hs300x_fetch_data(struct rt_sensor_device *sensor, void *buf, rt_size_t len)
+static RT_SIZE_TYPE hs300x_fetch_data(struct rt_sensor_device *sensor, void *buf, rt_size_t len)
 {
     RT_ASSERT(buf);
 
